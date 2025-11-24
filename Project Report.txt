@@ -1,0 +1,124 @@
+📄 PROJECT REPORT
+
+UPI QR CODE GENERATOR
+
+
+---
+
+1. Introduction
+
+Unified Payments Interface (UPI) is one of the most widely used digital payment platforms in India. With the rapid growth of QR-based payments, users prefer scanning QR rather than typing UPI IDs.
+This project provides a Python-based solution to generate QR codes automatically for different UPI applications including PhonePe, Paytm, and Google Pay.
+
+
+---
+
+2. Problem Statement
+
+Users often need multiple QR codes to receive payments from different platforms. Creating QR codes manually for each platform is time-consuming.
+This project solves the problem by automating QR code generation using a single UPI ID.
+
+
+---
+
+3. Objectives
+
+✔ Generate QR codes automatically for PhonePe, Paytm, and Google Pay
+✔ Save QR codes as images locally
+✔ Display generated QR codes instantly for preview
+
+
+---
+
+4. Tools and Technologies Used
+
+Tool / Library	Purpose
+
+Python	Programming
+qrcode	Generate QR codes
+Pillow (PIL)	Display QR code images
+
+
+
+---
+
+5. Workflow
+
+1️⃣ User enters their UPI ID
+2️⃣ Script generates UPI payment URLs for each application
+3️⃣ QR codes are created using the qrcode library
+4️⃣ QR codes are saved and displayed to user
+
+
+---
+
+6. Source Code
+
+import qrcode
+
+upi_id = input("Enter your UPI ID= ")
+
+phonepe_url = f'upi://pay?pa={upi_id}&pn=Recipient%20Name&mc=1234'
+paytm_url = f'upi://pay?pa={upi_id}&pn=Recipient%20Name&mc=1234'
+google_pay_url = f'upi://pay?pa={upi_id}&pn=Recipient%20Name&mc=1234'
+
+phonepe_qr = qrcode.make(phonepe_url)
+paytm_qr = qrcode.make(paytm_url)
+google_pay_qr = qrcode.make(google_pay_url)
+
+phonepe_qr.save("phonepe_qr.png")
+paytm_qr.save("paytm_qr.png")
+google_pay_qr.save("google_pay_qr.png")
+
+phonepe_qr.show()
+paytm_qr.show()
+google_pay_qr.show()
+
+
+---
+
+7. Testing
+
+Multiple UPI IDs were tested.
+All QR images opened successfully and supported payments on PhonePe, Paytm & Google Pay.
+
+
+---
+
+8. Challenges Faced
+
+• Correct UPI URL formatting for multiple apps
+• Library installation on different systems (qrcode / PIL)
+
+
+---
+
+9. Learnings
+
+• Understanding UPI protocol format (upi://pay?pa=...)
+• Using Python for QR code generation and image handling
+
+
+---
+
+10. Future Enhancements
+
+🔹 Support more UPI applications
+🔹 Add GUI using Tkinter
+🔹 Add personalised logo/branding on QR codes
+
+
+---
+
+11. Conclusion
+
+This project successfully automates QR code generation for digital payments and makes receiving payments more efficient and convenient across multiple UPI platforms.
+
+
+---
+
+12. References
+
+• Python Official Documentation
+• qrcode Library Documentation
+• UPI Format Standards
